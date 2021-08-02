@@ -25,7 +25,7 @@ date || credit || debit || balance
 
 Instance Variables -
 account_balance
-transaction_date
+transaction_history
 
 Methods -
 deposit

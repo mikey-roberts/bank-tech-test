@@ -6,20 +6,35 @@ describe Bank do
       expect(bank.account_balance).to eq 0
     end
 
-    # it 'stamps the date in a hyphenated convention' do
-    #   bank = Bank.new
-    #   bank.date
-    #   expect(bank.date).to eq 
-    # end
+    it 'initializes with an empty array to hold transactions' do
+      expect(bank.transaction_history).to eq []
+    end
 
-    it 'withdrawing an amount of money debits the account balance' do
-      bank.withdraw(500)
+    it 'debiting lowers account balance' do
+      bank.debit(500)
       expect(bank.account_balance).to eq -500
     end
 
-    it 'depositing an amount of money credits the account balance' do
-      bank.deposit(500)
+    it 'crediting increases the account balance' do
+      bank.credit(500)
       expect(bank.account_balance).to eq 500
     end
 
+    it 'debiting 600 and then crediting 500 leaves a debit balance' do
+      bank.debit(600)
+      bank.credit(500)
+      expect(bank.account_balance). to eq -100
+    end
+    
+    it 'stamps the date in a hyphenated convention' do
+      @fake_date = Time.now
+      @fake_date = @fake_date.strftime("%d/%m/%Y")
+      bank.date
+      expect(bank.date).to eq @fake_date
+    end
+
+    it 'stores transactions in an array' do
+      
+    end
   end
+  
