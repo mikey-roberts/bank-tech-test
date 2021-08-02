@@ -21,6 +21,19 @@ date || credit || debit || balance
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
 
+```Class - Bank
+
+Instance Variables -
+account_balance
+transaction_date
+
+Methods -
+deposit
+withdraw
+print
+
+
+
 ### To clone the repo
 ```shell
 $ git clone 
