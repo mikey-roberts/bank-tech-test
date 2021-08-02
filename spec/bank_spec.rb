@@ -34,18 +34,16 @@ describe Bank do
     end
 
     it 'stores deposit transaction in an array' do
-      bank.save_transaction(["14/01/2012 || || 500.00 || 2500.00"])
-      expect(bank.transaction_history).to eq [["14/01/2012 || || 500.00 || 2500.00"]]
+      bank.save_transaction(["02/08/2021 || || 500.00 || 2500.00"])
+      expect(bank.transaction_history).to eq [["02/08/2021 || || 500.00 || 2500.00"]]
     end
 
     it 'withdraw transaction' do
-      bank.withdraw_transaction(500.00)
-      expect(bank.withdraw_transaction(500)).to eq ["14/01/2012 || || 500.00 || -500.00"]
+      expect(bank.deposit_transaction(500)).to eq ["02/08/2021 || || 500.00 || 500.00"]
     end
 
     it 'deposit transaction' do
-      bank.deposit_transaction(500.00)
-      expect(bank.deposit_transaction(500)).to eq ["14/01/2012 || 2000.00 || || 2000.00"]
+      expect(bank.withdrawal_transaction(2000)).to eq ["02/08/2021 || 2000.00 || || 2000.00"]
     end
   end
   
