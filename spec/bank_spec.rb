@@ -39,11 +39,17 @@ describe Bank do
     end
 
     it 'deposit transaction' do
-      expect(bank.deposit_transaction(500)).to eq ["02/08/2021 || || 500.00 || 500.00"]
+      expect(bank.deposit_transaction(500)).to eq ["02/08/2021 || 500.00 || || 500.00"]
     end
 
     it 'withdraw transaction' do
-      expect(bank.withdrawal_transaction(2000)).to eq ["02/08/2021 || 2000.00 || || -2000.00"]
+      expect(bank.withdrawal_transaction(2000)).to eq ["02/08/2021 || || 2000.00 || -2000.00"]
+    end
+
+    it 'prints a statement with various transactions included' do
+      bank.deposit_transaction(500)
+      bank.deposit_transaction(600)
+      expect{bank.statement_summary}.to output("date || credit || debit || balance\n").to_stdout
     end
   end
   
