@@ -2,6 +2,8 @@ require 'bank.rb'
 
 describe Bank do
   let(:bank) { Bank.new }
+  let(:time) { Time.now }
+
     it 'initializes with an account balance 0' do 
       expect(bank.account_balance).to eq 0
     end
@@ -10,32 +12,25 @@ describe Bank do
       expect(bank.transaction_history).to eq []
     end
 
-    it 'debiting lowers account balance' do
-      bank.debit(500)
-      expect(bank.account_balance).to eq -500
-    end
-
-    it 'crediting increases the account balance' do
-      bank.credit(500)
+    it 'depositing increases account balance' do
+      bank.deposit_transaction(500)
       expect(bank.account_balance).to eq 500
     end
 
-    it 'debiting 600 and then crediting 500 leaves a debit balance' do
-      bank.debit(600)
-      bank.credit(500)
-      expect(bank.account_balance). to eq -100
+    it 'withdrawing lowers the account balance' do
+      bank.withdrawal_transaction(500)
+      expect(bank.account_balance).to eq -500
     end
-    
-    it 'stamps the date in a hyphenated convention' do
-      @fake_date = Time.now
-      @fake_date = @fake_date.strftime("%d/%m/%Y")
-      bank.transaction_date
-      expect(bank.transaction_date).to eq @fake_date
+
+    it 'debiting 600 and then crediting 500 leaves a debit balance' do
+      bank.withdrawal_transaction(600)
+      bank.deposit_transaction(500)
+      expect(bank.account_balance). to eq -100
     end
 
     it 'stores deposit transaction in an array' do
-      bank.save_transaction(["02/08/2021 || || 500.00 || 2500.00"])
-      expect(bank.transaction_history).to eq [["02/08/2021 || || 500.00 || 2500.00"]]
+      bank.deposit_transaction(500.00)
+      expect(bank.transaction_history).to eq ["02/08/2021 || 500.00 || || 500.00"]
     end
 
     it 'deposit transaction' do
@@ -49,7 +44,7 @@ describe Bank do
     it 'prints a statement with various transactions included' do
       bank.deposit_transaction(500)
       bank.deposit_transaction(600)
-      expect{bank.statement_summary}.to output("date || credit || debit || balance\n").to_stdout
+      expect{bank.statement_summary}.to output("date || credit || debit || balance\n02/08/2021 || 600.00 || || 1100.00\n02/08/2021 || 500.00 || || 500.00\n").to_stdout
     end
   end
   
