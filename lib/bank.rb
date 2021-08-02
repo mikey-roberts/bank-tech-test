@@ -26,8 +26,8 @@ class Bank
 
   # Provides a statement with a summary of all transactions
   def statement_summary
-    statement_header
-    statement_body
+    statement.print_header
+    statement.print_body
   end
 
   private

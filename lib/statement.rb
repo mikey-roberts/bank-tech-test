@@ -1,7 +1,7 @@
 require 'bank'
 
 class Statement
-
+  STATEMENT_HEADER = "date || credit || debit || balance"
   attr_accessor :account_balance
   attr_reader :transaction_history
   # Initializes with an empty array
@@ -31,12 +31,12 @@ class Statement
   end
 
   # Heading text for summary STDout
-  def statement_header
-    puts 'date || credit || debit || balance'
+  def print_header
+    puts STATEMENT_HEADER
   end
 
   # Array iteration for summary STDout
-  def statement_body
+  def print_body
     transaction_history.reverse.each { |transaction| puts transaction }
   end
 

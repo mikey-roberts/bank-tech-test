@@ -22,4 +22,12 @@ describe Statement do
   it 'adds two decimal places to method' do
     expect(statement.add_two_decimals(200)).to eq "200.00"
   end
+
+  it 'produces a statement header' do
+    expect { statement.print_header }.to output("date || credit || debit || balance\n").to_stdout
+  end
+
+  it 'produces a statement body' do
+    expect { allow(statement.print_body) }.to output(1).to_stdout
+  end
 end
