@@ -7,11 +7,7 @@ describe Bank do
   let(:date) { Time.now.strftime('%d/%m/%Y') }
 
   it 'initializes with an account balance 0' do
-    expect(bank.account_balance).to eq 0
-  end
-
-  it 'initializes with an empty array to hold transactions' do
-    expect(bank.transaction_history).to eq []
+    expect(bank.statement.account_balance).to eq 0
   end
 
   it 'depositing increases account balance' do
@@ -30,11 +26,6 @@ describe Bank do
     expect(bank.account_balance).to eq(-100)
   end
 
-  it 'stores deposit transaction in an array' do
-    bank.deposit_transaction(500.00)
-    expect(bank.transaction_history).to eq ["#{date} || 500.00 || || 500.00"]
-  end
-
   it 'deposit transaction' do
     expect(bank.deposit_transaction(500)).to eq ["#{date} || 500.00 || || 500.00"]
   end
@@ -47,10 +38,6 @@ describe Bank do
     bank.deposit_transaction(500)
     bank.deposit_transaction(600)
     expect { bank.statement_summary }.to output("date || credit || debit || balance\n#{date} || 600.00 || || 1100.00\n#{date} || 500.00 || || 500.00\n").to_stdout
-  end
-
-  it 'deposit fails if value is 0' do
-    expect { bank.deposit_transaction(0) }.to raise_error('Balance must be above 0!')
   end
 
   it 'deposit fails if value is 0' do
