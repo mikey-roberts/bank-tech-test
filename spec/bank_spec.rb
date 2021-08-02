@@ -33,8 +33,9 @@ describe Bank do
       expect(bank.date).to eq @fake_date
     end
 
-    it 'stores transactions in an array' do
-      
+    it 'stores credit transaction in an array' do
+      bank.save_transaction
+      expect(bank.save_transaction).to eq ["14/01/2012 || || 500.00 || 2500.00"]
     end
   end
   
