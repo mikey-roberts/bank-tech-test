@@ -19,7 +19,9 @@ class Bank
     transaction_date.strftime("%d/%m/%Y")
   end
   # Pushes transactions into an array to view historically
-  def save_transaction
-    return ["14/01/2012 || || 500.00 || 2500.00"]
+  def save_transaction(transaction)
+    @transaction_history.push(transaction)
   end
+
+  
 end
