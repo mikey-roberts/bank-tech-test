@@ -1,17 +1,17 @@
 ## Bank Tech Test
 ### Headline specifications
 
-Given a client makes a deposit of 1000 on 10-01-2012 
-And a deposit of 2000 on 13-01-2012 
-And a withdrawal of 500 on 14-01-2012 
-When she prints her bank statement
+Given a client makes a deposit of 1000 on 10-01-2012 \
+And a deposit of 2000 on 13-01-2012 \
+And a withdrawal of 500 on 14-01-2012 \
+When she prints her bank statement\
 Then she would see
 
 OUTPUT —
 
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
+date || credit || debit || balance\
+14/01/2012 || || 500.00 || 2500.00\
+13/01/2012 || 2000.00 || || 3000.00\
 10/01/2012 || 1000.00 || || 1000.00
 
 
@@ -28,9 +28,9 @@ account_balance
 transaction_history
 
 Methods -
-deposit
-withdraw
-print
+deposit_transaction
+withdraw_transaction
+statement_summary
 
 
 
@@ -47,3 +47,10 @@ $ rspec
 ```REPL
 $ ruby bank.rb
 ```
+
+Criteria met -
+-----
+* All tests passing
+* High [Test coverage] (100.00%)
+* The code is elegant: every class has a clear responsibility, methods are short etc. 
+* Code meets Rubocop guidelines
