@@ -6,30 +6,35 @@ class Bank
     @transaction_history = []
   end
   # Credit method to increase balance
-  def credit(amount)
-    @account_balance += amount
+  def credit(transaction_amount)
+    @account_balance += transaction_amount
   end
   # Debit method to decrease balance
-  def debit(amount)
-    @account_balance -= amount
+  def debit(transaction_amount)
+    @account_balance -= transaction_amount
   end
   # Formats the date of transaction
-  def date
-    transaction_date = Time.now
-    transaction_date.strftime("%d/%m/%Y")
+  def transaction_date
+    current_date = Time.now
+    current_date.strftime("%d/%m/%Y")
   end
   # Pushes transactions into an array to view historically
-  def save_transaction(transaction)
-    @transaction_history.push(transaction)
+  def save_transaction(new_transaction)
+    @transaction_history.push(new_transaction)
   end
   # Actions a bank depoit
-  def deposit_transaction(amount)
-    credit(amount)
-    save_transaction("#{date} || || #{'%.2f' % amount} || #{'%.2f' % @account_balance}")
+  def deposit_transaction(transaction_amount)
+    credit(transaction_amount)
+    save_transaction("#{transaction_date} || || #{add_two_decimals(transaction_amount)} || #{add_two_decimals(@account_balance)}")
   end
   # Actions a bank withdraw
-  def withdrawal_transaction(amount)
-    debit(amount)
-    save_transaction("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @account_balance}")
+  def withdrawal_transaction(transaction_amount)
+    debit(transaction_amount)
+    save_transaction("#{transaction_date} || #{add_two_decimals(transaction_amount)} || || #{add_two_decimals(@account_balance)}")
+  end
+
+  private
+  def add_two_decimals(value)
+    '%.2f' % value
   end
 end

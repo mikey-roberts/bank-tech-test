@@ -29,8 +29,8 @@ describe Bank do
     it 'stamps the date in a hyphenated convention' do
       @fake_date = Time.now
       @fake_date = @fake_date.strftime("%d/%m/%Y")
-      bank.date
-      expect(bank.date).to eq @fake_date
+      bank.transaction_date
+      expect(bank.transaction_date).to eq @fake_date
     end
 
     it 'stores deposit transaction in an array' do
