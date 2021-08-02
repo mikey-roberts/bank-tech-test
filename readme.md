@@ -54,3 +54,5 @@ Criteria met -
 * High [Test coverage] (100.00%)
 * The code is elegant: every class has a clear responsibility, methods are short etc. 
 * Code meets Rubocop guidelines
+* Code Follows DRY principle
+* Edgecases met
