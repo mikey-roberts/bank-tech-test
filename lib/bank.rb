@@ -32,7 +32,7 @@ class Bank
   # Actions a bank withdraw
   def withdrawal_transaction(amount)
     amount = amount
-    credit(amount)
+    debit(amount)
     date_today = date
     transaction = ["#{date_today} || #{'%.2f' % amount} || || #{'%.2f' % @account_balance}"]
   end
