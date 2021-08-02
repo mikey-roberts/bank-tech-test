@@ -25,12 +25,11 @@ class Bank
   # Actions a bank depoit
   def deposit_transaction(amount)
     credit(amount)
-    transaction = ["#{date} || || #{'%.2f' % amount} || #{'%.2f' % @account_balance}"]
+    save_transaction("#{date} || || #{'%.2f' % amount} || #{'%.2f' % @account_balance}")
   end
   # Actions a bank withdraw
   def withdrawal_transaction(amount)
     debit(amount)
-    date_today = date
-    transaction = ["#{date} || #{'%.2f' % amount} || || #{'%.2f' % @account_balance}"]
+    save_transaction("#{date} || #{'%.2f' % amount} || || #{'%.2f' % @account_balance}")
   end
 end
