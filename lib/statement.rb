@@ -30,7 +30,7 @@ class Statement
 
   # Converts values to display two decimal places
   def add_two_decimals(value)
-    ('%.2f' % value.to_f)
+    ('%.2f' % value)
   end
 
   # Validates whether transaction is debit or credit

@@ -27,4 +27,12 @@ describe Bank do
     bank.deposit_transaction(600)
     expect { bank.statement_summary }.to output("date || credit || debit || balance\n#{date} || 600.00 || || 1100.00\n#{date} || 500.00 || || 500.00\n").to_stdout
   end
+
+  it 'unable to enter penny value' do
+    expect { bank.deposit_transaction(0.01) }.to raise_error('Amount must be above 0!')
+  end
+
+  it 'unable to add additional decimal places' do
+    expect { bank.deposit_transaction(0.001) }.to raise_error('Amount must be above 0!')
+  end
 end

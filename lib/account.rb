@@ -10,6 +10,7 @@ class Account
 
   # Credit method to increase balance
   def credit_account(transaction_amount)
+    transaction_amount = sanitize_amount(transaction_amount)
     validate_amount(transaction_amount)
     @current_balance += transaction_amount
     create_transaction({ credit: transaction_amount })
@@ -17,6 +18,7 @@ class Account
 
   # Debit method to decrease balance
   def debit_account(transaction_amount)
+    transaction_amount = sanitize_amount(transaction_amount)
     validate_amount(transaction_amount)
     @current_balance -= transaction_amount
     create_transaction({ debit: transaction_amount })
@@ -38,5 +40,9 @@ class Account
   # Raises error in the event of a value less than 0 and an integer
   def validate_amount(transaction_amount)
     raise 'Amount must be above 0!' if transaction_amount <= 0
+  end
+
+  def sanitize_amount(transaction_amount)
+    transaction_amount.to_i()
   end
 end
