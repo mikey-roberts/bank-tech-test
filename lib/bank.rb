@@ -12,13 +12,11 @@ class Bank
 
   # Actions a bank depoit
   def deposit_transaction(transaction_amount)
-    validate_amount(transaction_amount)
     account.credit_account(transaction_amount)
   end
 
   # Actions a bank withdraw
   def withdrawal_transaction(transaction_amount)
-    validate_amount(transaction_amount)
     account.debit_account(transaction_amount)
   end
 
