@@ -12,7 +12,7 @@ class Statement
   # Array iteration for summary STDout
   def print_body(transaction_history)
     transaction_history.reverse.each do |transaction|
-    debit_or_credit?(transaction) ? deposit_format(transaction) : withdrawal_format(transaction)
+      debit_or_credit?(transaction) ? deposit_format(transaction) : withdrawal_format(transaction)
     end
   end
 

@@ -3,7 +3,6 @@
 require 'account'
 
 describe Account do
-  let(:bank) { Bank.new }
   let(:account) { Account.new }
 
   it 'initializes with an account balance 0' do

@@ -25,7 +25,9 @@ describe Bank do
   it 'prints a statement with various transactions included' do
     bank.deposit_transaction(500)
     bank.deposit_transaction(600)
-    expect { bank.statement_summary }.to output("date || credit || debit || balance\n#{date} || 600.00 || || 1100.00\n#{date} || 500.00 || || 500.00\n").to_stdout
+    expect do
+      bank.statement_summary
+    end.to output("date || credit || debit || balance\n#{date} || 600.00 || || 1100.00\n#{date} || 500.00 || || 500.00\n").to_stdout
   end
 
   it 'unable to enter penny value' do

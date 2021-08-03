@@ -35,7 +35,7 @@ class Account
 
   def save_transaction(amount)
     @transaction_history.push(amount)
-  end  
+  end
 
   # Raises error in the event of a value less than 0 and an integer
   def validate_amount(transaction_amount)
@@ -43,6 +43,6 @@ class Account
   end
 
   def sanitize_amount(transaction_amount)
-    transaction_amount.to_i()
+    transaction_amount.to_i
   end
 end
