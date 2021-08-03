@@ -79,5 +79,5 @@ $ IRB
 * The code is elegant: every class has a clear responsibility, methods are short etc. 
 * Code meets Rubocop guidelines
 * Code Follows DRY principle
-* Edgecases met
-* The specification does not mention how low an account can go into debit. This is    something that could be included at the clients request. 
+* Edgecases met - Validates against 0.00 entries. Additionally sanitizes floats on user input to avoid decimal values in balance.
+* The specification does not mention how low an account can go into debit. This is something that can be included at the clients request. 
