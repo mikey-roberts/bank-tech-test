@@ -27,11 +27,4 @@ class Bank
     statement.print_header
     statement.print_body(account.transaction_history)
   end
-
-  private
-
-  # Raises error in the event of a value less than 0 and an integer
-  def validate_amount(transaction_amount)
-    raise 'Amount must be above 0!' if transaction_amount <= 0
-  end
 end

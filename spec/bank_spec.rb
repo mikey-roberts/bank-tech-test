@@ -27,8 +27,4 @@ describe Bank do
     bank.deposit_transaction(600)
     expect { bank.statement_summary }.to output("date || credit || debit || balance\n#{date} || 600.00 || || 1100.00\n#{date} || 500.00 || || 500.00\n").to_stdout
   end
-
-  it 'deposit fails if value is 0' do
-    expect { bank.withdrawal_transaction(0) }.to raise_error('Amount must be above 0!')
-  end
 end

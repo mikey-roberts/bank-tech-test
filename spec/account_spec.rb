@@ -24,4 +24,9 @@ describe Bank do
     account.credit_account(500)
     expect(account.current_balance).to eq 500 
   end
+
+  it 'deposit fails if value is 0' do
+    expect { account.credit_account(0) }.to raise_error('Amount must be above 0!')
+    expect { account.debit_account(0) }.to raise_error('Amount must be above 0!')
+  end
 end

@@ -10,25 +10,17 @@ class Account
 
    # Credit method to increase balance
    def credit_account(transaction_amount)
+    validate_amount(transaction_amount)
     @current_balance += transaction_amount
     create_transaction({ credit: transaction_amount } )
   end
 
   # Debit method to decrease balance
   def debit_account(transaction_amount)
+    validate_amount(transaction_amount)
     @current_balance -= transaction_amount
     create_transaction({ debit: transaction_amount } )
   end
-
-  # # Pushes credit transactions into an array to view historically
-  # def save_credit_transaction(transaction_amount)
-  #   @transaction_history.push(deposit_format(transaction_amount))
-  # end
-  
-  # # Pushes debit transactions into an array to view historically
-  # def save_debit_transaction(transaction_amount)
-  #   @transaction_history.push(withdrawal_format(transaction_amount))
-  # end
 
   # Creates new transaction
   def create_transaction(amount)
@@ -43,13 +35,8 @@ class Account
 
   private
 
-  # # Formats the print style for withdrawal entries
-  # def deposit_format(transaction_amount)
-  #   "#{transaction_date} || #{add_two_decimals(transaction_amount)} || || #{add_two_decimals(@current_balance)}"
-  # end
-  
-  # # Formats the print style for credit entries
-  # def withdrawal_format(transaction_amount)
-  #   "#{transaction_date} || || #{add_two_decimals(transaction_amount)} || #{add_two_decimals(@current_balance)}"
-  # end
+  # Raises error in the event of a value less than 0 and an integer
+  def validate_amount(transaction_amount)
+    raise 'Amount must be above 0!' if transaction_amount <= 0
+  end
 end
