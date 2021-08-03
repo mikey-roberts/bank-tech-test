@@ -1,8 +1,9 @@
 require_relative 'statement'
 require_relative 'account'
+require_relative 'transaction'
 
 class Bank
-  attr_reader :current_balance, :statement, :account
+  attr_reader :statement, :account
 
   # Initializes with account balance of 0
   def initialize

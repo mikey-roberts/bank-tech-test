@@ -12,9 +12,9 @@ class Statement
   def print_body(transaction_history)
     transaction_history.reverse.each do |transaction| 
       if transaction.debit == nil && transaction.credit != nil
-        deposit_format(transaction_history)
+        deposit_format(transaction)
       else
-        withdrawal_format(transaction_history)
+        withdrawal_format(transaction)
       end
     end
   end
@@ -25,7 +25,7 @@ class Statement
   end
   
   # Formats the print style for credit entries
-  def withdrawal_format(transaction_amount)
+  def withdrawal_format(transaction)
     puts "#{transaction.date} || || #{add_two_decimals(transaction.debit)} || #{add_two_decimals(transaction.balance)}"
   end
 

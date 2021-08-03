@@ -13,7 +13,7 @@ describe Statement do
   end
 
   it 'produces a statement body' do
-    expect { allow(statement.print_body([1,2,3])) }.to output("3\n2\n1\n").to_stdout
+    expect { allow(statement.print_body([deposit])) }.to output("#{date} || 500.00 || || 500.00\n").to_stdout
   end
   
   it 'produces a debit statement' do
