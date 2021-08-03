@@ -22,11 +22,6 @@ date || credit || debit || balance\
 * Account statement (date, amount, balance) printing.
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
-### Additional Notes
-
-* The specification does not mention how low an account can go into debit. This is something that could be added as further validation. 
-
-
 ### Outline of design
 ```
 Bank
@@ -78,10 +73,11 @@ $ IRB
 ```
 
 
-### Headline specifications - User Stories
+### Additional Notes
 * All tests passing
 * High [Test coverage] (100.00%)
 * The code is elegant: every class has a clear responsibility, methods are short etc. 
 * Code meets Rubocop guidelines
 * Code Follows DRY principle
 * Edgecases met
+* The specification does not mention how low an account can go into debit. This is    something that could be included at the clients request. 
