@@ -1,4 +1,3 @@
-require 'transaction'
 
 class Account
   attr_accessor :current_balance, :transaction_history

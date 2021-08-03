@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'bank'
+require 'account'
 
-describe Bank do
+describe Account do
   let(:bank) { Bank.new }
   let(:account) { Account.new }
 
