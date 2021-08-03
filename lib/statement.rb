@@ -12,7 +12,7 @@ class Statement
   # Array iteration for summary STDout
   def print_body(transaction_history)
     transaction_history.reverse.each do |transaction|
-      transaction.debit.nil? && !transaction.credit.nil? ? deposit_format(transaction) : withdrawal_format(transaction)
+    debit_or_credit?(transaction) ? deposit_format(transaction) : withdrawal_format(transaction)
     end
   end
 
@@ -31,5 +31,10 @@ class Statement
   # Converts values to display two decimal places
   def add_two_decimals(value)
     ('%.2f' % value.to_f)
+  end
+
+  # Validates whether transaction is debit or credit
+  def debit_or_credit?(transaction)
+    transaction.debit.nil? && !transaction.credit.nil?
   end
 end
