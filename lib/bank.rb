@@ -1,6 +1,5 @@
 require_relative 'statement'
 require_relative 'account'
-# frozen_string_literal: true
 
 class Bank
   attr_reader :current_balance, :statement, :account

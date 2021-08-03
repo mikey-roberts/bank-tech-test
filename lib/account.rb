@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require 'transaction'
 
 class Account
   attr_accessor :current_balance, :transaction_history
@@ -11,11 +11,13 @@ class Account
    # Credit method to increase balance
    def credit_account(transaction_amount)
     @current_balance += transaction_amount
+    create_transaction({ credit: transaction_amount } )
   end
 
   # Debit method to decrease balance
   def debit_account(transaction_amount)
     @current_balance -= transaction_amount
+    create_transaction({ debit: transaction_amount } )
   end
 
   # Pushes credit transactions into an array to view historically
@@ -26,6 +28,12 @@ class Account
   # Pushes debit transactions into an array to view historically
   def save_debit_transaction(transaction_amount)
     @transaction_history.push(withdrawal_format(transaction_amount))
+  end
+
+  # Creates new transaction
+  def create_transaction(amount)
+    new_transaction = Transaction.new(amount)
+    new_transaction.balance = @current_balance
   end
 
   private

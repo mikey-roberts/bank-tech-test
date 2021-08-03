@@ -1,3 +1,5 @@
+
+
 class Statement
   STATEMENT_HEADER = "date || credit || debit || balance"
   attr_reader :transaction_history
