@@ -22,6 +22,8 @@ class Account
     create_transaction({ debit: transaction_amount })
   end
 
+  private
+
   # Creates new transaction
   def create_transaction(amount)
     new_transaction = Transaction.new(amount)
@@ -31,9 +33,7 @@ class Account
 
   def save_transaction(amount)
     @transaction_history.push(amount)
-  end
-
-  private
+  end  
 
   # Raises error in the event of a value less than 0 and an integer
   def validate_amount(transaction_amount)

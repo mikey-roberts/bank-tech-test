@@ -20,6 +20,8 @@ class Statement
     end
   end
 
+  private
+
   # Formats the print style for withdrawal entries
   def deposit_format(transaction)
     puts "#{transaction.date} || #{add_two_decimals(transaction.credit)} || || #{add_two_decimals(transaction.balance)}"

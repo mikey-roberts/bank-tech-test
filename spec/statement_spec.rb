@@ -12,15 +12,11 @@ describe Statement do
     expect { statement.print_header }.to output("date || credit || debit || balance\n").to_stdout
   end
 
-  it 'produces a statement body' do
+  it 'produces a deposit statement body' do
     expect { allow(statement.print_body([deposit])) }.to output("#{date} || 500.00 || || 500.00\n").to_stdout
   end
 
-  it 'produces a debit statement' do
-    expect { statement.deposit_format(deposit) }.to output("#{date} || 500.00 || || 500.00\n").to_stdout
-  end
-
-  it 'produces a withdrawal statement' do
-    expect { statement.withdrawal_format(withdrawal) }.to output("#{date} || || 500.00 || 500.00\n").to_stdout
+  it 'produces a withdrawal statement body' do
+    expect { allow(statement.print_body([withdrawal])) }.to output("#{date} || || 500.00 || 500.00\n").to_stdout
   end
 end
