@@ -14,14 +14,12 @@ class Bank
   def deposit_transaction(transaction_amount)
     validate_amount(transaction_amount)
     account.credit_account(transaction_amount)
-    account.save_credit_transaction(transaction_amount)
   end
 
   # Actions a bank withdraw
   def withdrawal_transaction(transaction_amount)
     validate_amount(transaction_amount)
     account.debit_account(transaction_amount)
-    account.save_debit_transaction(transaction_amount)
   end
 
   # Provides a statement with a summary of all transactions
