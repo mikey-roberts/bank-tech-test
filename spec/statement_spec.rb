@@ -15,7 +15,7 @@ describe Statement do
   it 'produces a statement body' do
     expect { allow(statement.print_body([deposit])) }.to output("#{date} || 500.00 || || 500.00\n").to_stdout
   end
-  
+
   it 'produces a debit statement' do
     expect { statement.deposit_format(deposit) }.to output("#{date} || 500.00 || || 500.00\n").to_stdout
   end

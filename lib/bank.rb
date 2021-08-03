@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'statement'
 require_relative 'account'
 require_relative 'transaction'

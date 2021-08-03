@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class Account
   attr_accessor :current_balance, :transaction_history
@@ -7,18 +8,18 @@ class Account
     @transaction_history = []
   end
 
-   # Credit method to increase balance
-   def credit_account(transaction_amount)
+  # Credit method to increase balance
+  def credit_account(transaction_amount)
     validate_amount(transaction_amount)
     @current_balance += transaction_amount
-    create_transaction({ credit: transaction_amount } )
+    create_transaction({ credit: transaction_amount })
   end
 
   # Debit method to decrease balance
   def debit_account(transaction_amount)
     validate_amount(transaction_amount)
     @current_balance -= transaction_amount
-    create_transaction({ debit: transaction_amount } )
+    create_transaction({ debit: transaction_amount })
   end
 
   # Creates new transaction
