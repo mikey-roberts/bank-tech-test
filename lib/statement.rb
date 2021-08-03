@@ -12,11 +12,7 @@ class Statement
   # Array iteration for summary STDout
   def print_body(transaction_history)
     transaction_history.reverse.each do |transaction|
-      if transaction.debit.nil? && !transaction.credit.nil?
-        deposit_format(transaction)
-      else
-        withdrawal_format(transaction)
-      end
+      transaction.debit.nil? && !transaction.credit.nil? ? deposit_format(transaction) : withdrawal_format(transaction)
     end
   end
 
